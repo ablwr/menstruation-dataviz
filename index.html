@@ -289,9 +289,8 @@ function daysIntoYear(date){
 		function makeChart(points){
 			points.forEach(d => d[0] = (d[0] * 2))
 			
-			var line = d3.svg.line()
-					.tension(0.8)
-					.interpolate("cardinal");
+			var line = d3.line()
+					.curve(d3.curveCardinal.tension(0));
 
 			var svg = d3.select(".charts").append("svg")
 					.datum(points)
@@ -312,7 +311,7 @@ function daysIntoYear(date){
 				path.transition()
 						.duration(7500)
 						.attrTween("stroke-dasharray", tweenDash)
-						.each("end", function() { d3.select(this).call(transition); });
+						.on("end", function() { d3.select(this).call(transition); });
 			}
 
 			function tweenDash() {
