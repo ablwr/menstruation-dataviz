@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>menstruation rollercoaster</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<style>
+		body {font-family: sans-serif;text-align:center;}
+		.grid {color:darkred;display: grid;grid-template-columns: 60px auto;align-items: center;justify-items: left;}
+		.years{height:200px;font-size: 50px;line-height: 200px;opacity:0.3;}
+		.charts{height:200px;}
+		.charts svg {display:block;}
+		path {fill: none;stroke: darkred;stroke-width: 4px;}
+		</style>
+	</head>
+	<body id="body">
+		<h1>Menstruation Rollercoaster</h1>
+		<div class="grid">
+			<div class="years">
+				<h2>"Normal"</h2>
+				<h2>2008</h2>
+				<h2>2009</h2>
+				<h2>2010</h2>
+				<h2>2011</h2>
+				<h2>2012</h2>
+				<h2>2013</h2>
+				<h2>2014</h2>
+				<h2>2015</h2>
+				<h2>2016</h2>
+				<h2>2017</h2>
+			</div>
+			<div class="charts">
+			</div>
+		</div>
+	</body>
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+		<script>
+		
+		var normal = [
+			[1, 50],
+			[28, 1],
+			[28, 100],
+			[56, 1],
+			[56, 100],
+			[84, 1],
+			[84, 100],
+			[112, 1],
+			[112, 100],
+			[140, 1],
+			[140, 100],
+			[168, 1],
+			[168, 100],
+			[196, 1],
+			[196, 100],
+			[224, 1],
+			[224, 100],
+			[252, 1],
+			[252, 100],
+			[280, 1],
+			[280, 100],
+			[308, 1],
+			[308, 100],
+			[336, 1],
+			[336, 100],
+			[364, 1],
+			[364, 100],
+			[365, 50]			
+		]
+		
+		
+		var two8 = [
+		  [1, 50],
+		  [44, 1],
+			[44, 100],
+		  [93, 1],
+			[93, 100],
+		  [210, 1],
+			[210, 100],
+		  [272, 1],
+			[272, 100],
+			[365, 50]
+		];
+
+		var two9 = [
+			[1, 50],
+			[7, 1],
+			[7, 100],
+			[86, 1],
+			[86, 100],
+			[190, 1],
+			[190, 100],
+			[288, 1],
+			[288, 100],
+			[335, 1],
+			[335, 100],
+			[365, 50]
+		]
+
+	 	var two10 = [
+			[1, 50],
+			[69, 1],
+			[69, 100],
+			[124, 1],
+			[124, 100],
+			[153, 1],
+			[153, 100],
+			[192, 1],
+			[192, 100],
+			[221, 1],
+			[221, 100],
+			[281, 1],
+			[281, 100],
+			[351, 1],
+			[351, 100],
+			[365, 50]
+		]
+			
+		var two11 = [
+			[1, 50],
+			[28, 1],
+			[28, 100],
+			[74, 1],
+			[74, 100],
+			[127, 1],
+			[127, 100],
+			[172, 1],
+			[172, 100],
+			[205, 1],
+			[205, 100],
+			[256, 1],
+			[256, 100],
+			[319, 1],
+			[319, 100],
+			[365, 50]
+		] 
+		
+		var two12 = [
+			[1, 50],
+			[2, 1],
+			[2, 100],
+			[91, 1],
+			[91, 100],
+			[135, 1],
+			[135, 100],
+			[199, 1],
+			[199, 100],
+			[253, 1],
+			[253, 100],
+			[284, 1],
+			[284, 100],
+			[318, 1],
+			[318, 100],
+			[330, 1],
+			[330, 100],
+			[349, 1],
+			[349, 100],
+			[351, 1],
+			[351, 100],
+			[362, 1],
+			[362, 100],
+			[365, 50]
+		] 
+
+		var two13 = [
+			[1, 50],
+			[22, 1],
+			[22, 100],
+			[37, 1],
+			[37, 100],
+			[47, 1],
+			[47, 100],
+			[58, 1],
+			[58, 100],
+			[73, 1],
+			[73, 100],
+			[94, 1],
+			[94, 100],
+			[105, 1],
+			[105, 100],
+			[137, 1],
+			[137, 100],
+			[169, 1],
+			[169, 100],
+			[189, 1],
+			[189, 100],
+			[214, 1],
+			[214, 100],
+			[240, 1],
+			[240, 100],
+			[274, 1],
+			[274, 100],
+			[325, 1],
+			[325, 100],
+			[358, 1],
+			[358, 100],
+			[361, 1],
+			[361, 100],
+			[365, 50]
+			]
+			
+			var two14 = [
+				[1, 50],
+				[33, 1],
+				[33, 100],
+				[77, 1],
+				[77, 100],
+				[121, 1],
+				[121, 100],
+				[196, 1],
+				[196, 100],
+				[229, 1],
+				[229, 100],
+				[252, 1],
+				[252, 100],
+				[365, 50]
+			]
+
+			var two15 = [
+				[1,50],
+				[19, 1],
+				[19, 100],
+				[64, 1],
+				[64, 100],
+				[101, 1],
+				[101, 100],
+				[154, 1],
+				[154, 100],
+				[241, 1],
+				[241, 100],
+				[308, 1],
+				[308, 100],
+				[345, 1],
+				[345, 100],
+				[363, 1],
+				[363, 100],
+				[365, 50]
+			]
+			
+			var two16 = [
+				[1,50],
+				[107,1],
+				[107,100],
+				[163,1],
+				[163,100],
+				[207,1],
+				[207,100],
+				[256,1],
+				[256,100],
+				[290,1],
+				[290,100],
+				[330,1],
+				[330,100],
+				[365,50]
+			]
+			
+			var two17 = [
+				[1,50],
+				[6, 1],
+				[6, 100],
+				[46, 1],
+				[46, 100],
+				[86, 1],
+				[86, 100],
+				[125, 1],
+				[125, 100],
+				[181, 1],
+				[181, 100],
+				[226, 1],
+				[226, 100],
+				[275, 1],
+				[275, 100],
+				[323, 1],
+				[323, 100],
+				[365,50]
+			]
+		
+function daysIntoYear(date){
+  return (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
+}
+
+// d.forEach(d => 
+// console.log(`${daysIntoYear(d)} days into the year`));
+// 
+// d = [
+// new Date(2017,01-1,06)
+// ]
+		
+		function makeChart(points){
+			points.forEach(d => d[0] = (d[0] * 2))
+			
+			var line = d3.svg.line()
+					.tension(0.8)
+					.interpolate("cardinal");
+
+			var svg = d3.select(".charts").append("svg")
+					.datum(points)
+					.attr("width", 1000)
+					.attr("viewBox",'-10,-10,760,200')
+					.attr("id","")
+
+			svg.append("path")
+					.style("stroke", "#D6D6D6")
+					.style("stroke-dasharray", "2,2")
+					.attr("d", line);
+
+			svg.append("path")
+					.attr("d", line)
+					.call(transition);
+
+			function transition(path) {
+				path.transition()
+						.duration(7500)
+						.attrTween("stroke-dasharray", tweenDash)
+						.each("end", function() { d3.select(this).call(transition); });
+			}
+
+			function tweenDash() {
+				var l = this.getTotalLength(),
+						i = d3.interpolateString("0," + l, l + "," + l+1);
+				return function(t) { return i(t); };
+			}
+		}
+		var body = document.getElementById('body');
+		
+		makeChart(normal);
+		makeChart(two8);
+		makeChart(two9);
+		makeChart(two10);
+		makeChart(two11);
+		makeChart(two12);
+		makeChart(two13);
+		makeChart(two14);
+		makeChart(two15);
+		makeChart(two16);
+		makeChart(two17);
+		</script>
+</html>
